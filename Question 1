@@ -1,0 +1,19 @@
+word = input("Enter a word: ")
+even = []
+odd = []
+if len(word)%2 == 1:
+    word += " "
+for i in range(len(word)):
+    if (i%2) == 0:
+        even.append(word[i])
+    else:
+        odd.append(word[i])
+print("Encrypted word:", "".join(even) + "".join(odd))
+
+## Rearrange back to original word
+num = 1
+for i in range(len(even)):
+    letter = odd[i]
+    even.insert(i + num, letter)
+    num += 1
+print("".join(even))
