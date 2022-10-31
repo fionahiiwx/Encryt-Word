@@ -1,0 +1,43 @@
+word = input("Enter a word: ")
+even = []
+odd = []
+new_even = []
+new_odd = []
+if len(word)%2 == 1:
+    word += " "
+for i in range(len(word)):
+    if (i%2) == 0:
+        even.append(word[i])
+    else:
+        odd.append(word[i])
+for j in even:
+    x = ord(j)
+    x += 3
+    new = j.replace(j, chr(x))
+    new_even.append(new)
+for j in odd:
+    x = ord(j)
+    x += 3
+    new = j.replace(j, chr(x))
+    new_odd.append(new)
+print("Encrypted word:", "".join(new_even) + "".join(new_odd))
+
+##  Rearrange back to original
+final_even = []
+final_odd = []
+for j in new_even:
+    x = ord(j)
+    x -= 3
+    new = j.replace(j, chr(x))
+    final_even.append(new)
+for j in new_odd:
+    x = ord(j)
+    x -= 3
+    new = j.replace(j, chr(x))
+    final_odd.append(new)
+num = 1
+for i in range(len(final_even)):
+    letter = final_odd[i]
+    final_even.insert(i + num, letter)
+    num += 1
+print("".join(final_even))
